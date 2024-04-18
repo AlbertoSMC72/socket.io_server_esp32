@@ -5,13 +5,20 @@ import cors from 'cors';
 
 const app = express();
 const server = http.createServer(app);
-const io = new Server(server);
 
 // Configura el middleware CORS para permitir todas las solicitudes desde cualquier origen
 app.use(cors({
     origin: '*',
     methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
 }));
+
+const io = new Server(server, {
+    cors: {
+        origin: "*",
+        methods: ["GET", "POST", "PATCH", "DELETE", "PUT"],
+    },
+});
+
 
 const rooms: { [mac: string]: string } = {};
 
