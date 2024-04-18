@@ -10,6 +10,7 @@ const io = new Server(server);
 // Configura el middleware CORS para permitir todas las solicitudes desde cualquier origen
 app.use(cors({
     origin: '*',
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS', 'PATCH'],
 }));
 
 const rooms: { [mac: string]: string } = {};
@@ -46,3 +47,4 @@ const PORT = process.env.PORT || 3001;
 server.listen(PORT, () => {
     console.log(`Servidor HTTP y Socket.IO escuchando en el puerto ${PORT}`);
 });
+
