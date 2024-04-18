@@ -8,7 +8,10 @@ const server = http.createServer(app);
 const io = new Server(server);
 
 // Configura el middleware CORS para permitir todas las solicitudes desde cualquier origen
-app.use(cors());
+app.use(cors({
+    origin: '*',
+}));
+
 const rooms: { [mac: string]: string } = {};
 
 app.use(express.json());
